@@ -5,6 +5,7 @@ import com.cyx.community.dto.GithubUser;
 import com.cyx.community.mapper.UserMapper;
 import com.cyx.community.model.User;
 import com.cyx.community.provider.GithubProvider;
+import com.cyx.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class AuthorizeController {
     @Autowired
     private GithubProvider githubProvider;
 
+    @Autowired
+    private UserService userService;
+
     @Value("${github.client.id}")
     private String clientId;
 
@@ -30,9 +34,6 @@ public class AuthorizeController {
 
     @Value("${github.redirect.uri}")
     private String redirectUri;
-
-    @Autowired
-    private UserMapper userMapper;
 
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code")String code,
@@ -54,13 +55,8 @@ public class AuthorizeController {
             user.setToken(token);
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtModified());
-            user.setName("cyx");
-            user.setAccountId("114514");
-            user.setGmtCreate(1000000L);
-            user.setGmtModified(1000000L);
-            userMapper.insert(user);
+            user.setAvatarUrl(githubUser.getAvatarUrl());
+            userService.createOrUpdate(user);
             //登录成功，写入cookie和session
             response.addCookie(new Cookie("token",token));
             request.getSession().setAttribute("user",githubUser);

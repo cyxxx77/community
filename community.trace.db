@@ -1,0 +1,9 @@
+2022-08-12 10:29:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+insert into Users (name,account_id,token,gmt_create,gmt_modified) values (?,?,?,?,?) [42104-210]
+2022-08-12 10:30:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+insert into Users (name,account_id,token,gmt_create,gmt_modified) values (?,?,?,?,?) [42104-210]
+2022-08-12 10:33:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+insert into Users (name,account_id,token,gmt_create,gmt_modified) values (?,?,?,?,?) [42104-210]

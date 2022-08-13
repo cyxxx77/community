@@ -4,3 +4,6 @@
 https://spring.io/guides
 
 https://github.com/cyxxx77/community
+
+#常用命令
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate

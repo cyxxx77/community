@@ -2,6 +2,7 @@ package com.cyx.community.interceptor;
 
 import com.cyx.community.mapper.UserMapper;
 import com.cyx.community.model.User;
+import com.cyx.community.model.UserExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -23,7 +24,9 @@ public class SessionInterceptor implements HandlerInterceptor {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) {
                     String token = cookie.getValue();
-                    User user = userMapper.findByToken(token);
+                    UserExample example = new UserExample();
+                    example.createCriteria().andTokenEqualTo(token);
+                    User user = (User) userMapper.selectByExample(example);
                     if (user != null) {
                         request.getSession().setAttribute("githubUser", user);
                     }

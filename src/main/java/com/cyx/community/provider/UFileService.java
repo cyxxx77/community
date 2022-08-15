@@ -28,7 +28,6 @@ public class UFileService {
 
     /**
      * 通过 HTTP 图片 URL 上传
-     *
      * @param url HTTP 图片 URL
      * @return
      * @throws FileNotFoundException

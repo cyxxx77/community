@@ -39,6 +39,7 @@ public class AvatarFixTasks {
             for (User user : list) {
                 try {
                     if (StringUtils.contains(user.getAvatarUrl(), "githubusercontent")) {
+                        //上传github头像图片并重设数据库中对应单元的地址
                         UFileResult fileResult = uFileService.upload(user.getAvatarUrl());
                         if (fileResult != null && fileResult.getFileUrl() != null) {
                             user.setAvatarUrl(fileResult.getFileUrl());

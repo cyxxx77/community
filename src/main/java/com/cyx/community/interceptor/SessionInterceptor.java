@@ -1,7 +1,10 @@
 package com.cyx.community.interceptor;
 
 import com.cyx.community.enums.AdPosEnum;
+import com.cyx.community.mapper.AdMapper;
 import com.cyx.community.mapper.UserMapper;
+import com.cyx.community.model.Ad;
+import com.cyx.community.model.AdExample;
 import com.cyx.community.model.User;
 import com.cyx.community.model.UserExample;
 import com.cyx.community.service.AdService;
@@ -28,9 +31,6 @@ public class SessionInterceptor implements HandlerInterceptor {
     private NotificationService notificationService;
 
     @Autowired
-    private NavService navService;
-
-    @Autowired
     private AdService adService;
 
     @Value("${github.redirect.uri}")
@@ -44,10 +44,11 @@ public class SessionInterceptor implements HandlerInterceptor {
         request.getServletContext().setAttribute("giteeRedirectUri", giteeRedirectUri);
         request.getServletContext().setAttribute("githubRedirectUri", githubRedirectUri);
         for (AdPosEnum adPos : AdPosEnum.values()) {
-            request.getServletContext().setAttribute(adPos.name(),adService.list(adPos.name()));
+            List<Ad> list = adService.list(adPos.name());
+            request.getServletContext().setAttribute(adPos.name(), list);
         }
         Cookie[] cookies = request.getCookies();
-        if(cookies != null || cookies.length != 0) {
+        if(cookies != null && cookies.length != 0) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) {
                     String token = cookie.getValue();

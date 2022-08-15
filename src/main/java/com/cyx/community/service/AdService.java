@@ -21,7 +21,6 @@ public class AdService {
         .andGmtStartLessThan(System.currentTimeMillis())
         .andGmtEndGreaterThan(System.currentTimeMillis());
 //        adExample.setOrderByClause("priority desc");
-        List<Ad> ads = adMapper.selectByExample(adExample);
-        return ads;
+        return adMapper.selectByExample(adExample);
     }
 }

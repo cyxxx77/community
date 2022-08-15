@@ -73,7 +73,7 @@
                     <h4 class="modal-title" id="myModalLabel">登录注册</h4>
                 </div>
                 <div class="modal-body" style="text-align:center">
-                    <a th:href="@{https://gitee.com/oauth/authorize(client_id='e542c33bb680ea612ce21b8efb397274eae34833553bc80bc9ff881425d1b883',redirect_uri=${#httpServletRequest.getServletContext().getAttribute('giteeRedirectUri')},response_type=code)}">
+                    <a th:href="@{https://gitee.com/oauth/authorize(client_id='31541d0fe130e207686c82f0d862ee89039ccc2d8a6ab8e40e347a04c28f025c',redirect_uri=${#httpServletRequest.getServletContext().getAttribute('giteeRedirectUri')},response_type=code)}">
                         <img src="/images/gitee.png">
                     </a>
                     <a th:href="@{https://github.com/login/oauth/authorize(client_id='79fcf6ea66c3c138819c',redirect_uri=${#httpServletRequest.getServletContext().getAttribute('githubRedirectUri')},scope='user',state=1)}">

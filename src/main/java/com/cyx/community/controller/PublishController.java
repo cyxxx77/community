@@ -1,5 +1,6 @@
 package com.cyx.community.controller;
 
+import com.cyx.community.cache.TagCache;
 import com.cyx.community.dto.QuestionDTO;
 import com.cyx.community.mapper.QuestionMapper;
 import com.cyx.community.mapper.UserMapper;
@@ -7,6 +8,7 @@ import com.cyx.community.model.Question;
 import com.cyx.community.model.User;
 import com.cyx.community.service.QuestionService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,18 +28,20 @@ public class PublishController {
     private QuestionService questionService;
 
     @GetMapping("/publish/{id}")
-    public String edit(@PathVariable(name = "id")Integer id,Model model
+    public String edit(@PathVariable(name = "id")Long id,Model model
                        ){
         QuestionDTO question = questionService.getById(id);
         model.addAttribute("title",question.getTitle());
         model.addAttribute("description",question.getDescription());
         model.addAttribute("tag",question.getTag());
         model.addAttribute("id",question.getId());
+        model.addAttribute("tags",TagCache.get());
         return "publish";
     }
 
     @GetMapping("/publish")
-    public String publish(){
+    public String publish(Model model){
+        model.addAttribute("tags",TagCache.get());
         return "publish";
     }
 
@@ -45,11 +49,13 @@ public class PublishController {
     public String doPublish(@RequestParam(value = "title", required = false) String title,
                             @RequestParam(value = "description", required = false) String description,
                             @RequestParam(value = "tag", required = false) String tag,
-                            @RequestParam(value = "id", required = false) Integer id,
+                            @RequestParam(value = "id", required = false) Long id,
                             HttpServletRequest request, Model model){
         model.addAttribute("title",title);
         model.addAttribute("description",description);
         model.addAttribute("tag",tag);
+        model.addAttribute("tags",TagCache.get());
+
         if(title == null || title.equals("")){
             model.addAttribute("error","标题不能为空");
             return "publish";
@@ -60,6 +66,12 @@ public class PublishController {
         }
         if(tag == null || tag.equals("")){
             model.addAttribute("error","标签不能为空");
+            return "publish";
+        }
+
+        String filterInvalids = TagCache.filterInvalids(tag);
+        if(StringUtils.isNotBlank(filterInvalids)){
+            model.addAttribute("erroe","输入非法标签"+filterInvalids);
             return "publish";
         }
 

@@ -2,7 +2,9 @@ package com.cyx.community.controller;
 
 import com.cyx.community.dto.PaginationDTO;
 import com.cyx.community.mapper.UserMapper;
+import com.cyx.community.model.Notification;
 import com.cyx.community.model.User;
+import com.cyx.community.service.NotificationService;
 import com.cyx.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,8 @@ public class ProfileController {
     UserMapper userMapper;
     @Autowired
     QuestionService questionService;
+    @Autowired
+    private NotificationService notificationService;
     @GetMapping("/profile/{action}")
     public String profile(@PathVariable(name = "action")String action, Model model, HttpServletRequest request,
                           @RequestParam(name = "page",defaultValue = "1") Integer page,
@@ -32,14 +36,16 @@ public class ProfileController {
          if(action.equals("questions")){
              model.addAttribute("section","questions");
              model.addAttribute("sectionName","我的提问");
+             PaginationDTO paginationDTO = questionService.list(user.getId(), page, size);
+             model.addAttribute("pagination",paginationDTO);
          }else if(action.equals("replies")){
+             PaginationDTO paginationDTO = notificationService.list(user.getId(),page,size);
+             Long unreadCount = notificationService.unreadCount(user.getId());
              model.addAttribute("section","replies");
+             model.addAttribute("pagination",paginationDTO);
              model.addAttribute("sectionName","最新回复");
          }
 
-        PaginationDTO paginationDTO = questionService.list(user.getId(), page, size);
-
-         model.addAttribute("pagination",paginationDTO);
         return "profile";
     }
 }

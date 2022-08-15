@@ -6,6 +6,8 @@ import com.cyx.community.model.UserExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -13,16 +15,18 @@ public class UserService {
 
     public void createOrUpdate(User user) {
         UserExample userExample = new UserExample();
-        userExample.createCriteria().andAccountIdEqualTo(user.getAccountId());
-        User dbUser = (User) userMapper.selectByExample(userExample);
-        if(dbUser == null){
+        userExample.createCriteria().andAccountIdEqualTo(user.getAccountId())
+        .andTypeEqualTo(user.getType());
+        List<User> users = userMapper.selectByExample(userExample);
+        if(users.size() ==0){
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtModified());
-            userMapper.insert(dbUser);
+            userMapper.insert(user);
         }else {
+            User dbUser = users.get(0);
             User updateUser = new User();
             updateUser.setGmtModified(System.currentTimeMillis());
-            updateUser.setAvatar(user.getAvatar());
+            updateUser.setAvatarUrl(user.getAvatarUrl());
             updateUser.setName(user.getName());
             updateUser.setToken(user.getToken());
             UserExample example = new UserExample();

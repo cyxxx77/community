@@ -1,9 +1,9 @@
-package com.cyx.community.dto;
+package com.cyx.community.provider.dto;
 
 import lombok.Data;
 
 @Data
-public class GithubUser {
+public class GiteeUser {
     private String name;
     private Long id;
     private String bio;

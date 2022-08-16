@@ -5517,3 +5517,938 @@ cn.ucloud.ufile.exception.UfileIOException: Occur IOException while sending http
 2022-08-16 11:02:17.837 DEBUG 9200 --- [http-nio-8888-exec-8] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
 2022-08-16 11:02:17.838 DEBUG 9200 --- [http-nio-8888-exec-8] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
 2022-08-16 11:02:17.839 DEBUG 9200 --- [http-nio-8888-exec-8] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:09:05.922  INFO 11692 --- [main] com.cyx.community.CommunityApplication   : Starting CommunityApplication on LAPTOP-633GS3Q4 with PID 11692 (D:\code\community\target\classes started by 86159 in D:\code\community)
+2022-08-16 11:09:05.925  INFO 11692 --- [main] com.cyx.community.CommunityApplication   : No active profile set, falling back to default profiles: default
+2022-08-16 11:09:06.618  INFO 11692 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'listenerAsyncConfiguration' of type [com.cyx.community.listener.ListenerAsyncConfiguration$$EnhancerBySpringCGLIB$$e4829403] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-16 11:09:06.841  INFO 11692 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2022-08-16 11:09:06.848  INFO 11692 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-16 11:09:06.848  INFO 11692 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-08-16 11:09:06.934  INFO 11692 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-16 11:09:06.935  INFO 11692 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 970 ms
+2022-08-16 11:09:07.367  INFO 11692 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-08-16 11:09:07.419  INFO 11692 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-08-16 11:09:07.519  INFO 11692 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-08-16 11:09:07.632  INFO 11692 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2022-08-16 11:09:07.639  INFO 11692 --- [scheduling-1] c.cyx.community.schedule.AvatarFixTasks  : fixUserAvatar start Tue Aug 16 11:09:07 CST 2022
+2022-08-16 11:09:07.641  INFO 11692 --- [main] com.cyx.community.CommunityApplication   : Started CommunityApplication in 2.005 seconds (JVM running for 2.65)
+2022-08-16 11:09:07.660  INFO 11692 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-08-16 11:09:08.031  INFO 11692 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-08-16 11:09:08.038 DEBUG 11692 --- [scheduling-1] c.c.c.m.U.selectByExampleWithRowbounds   : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user order by id desc 
+2022-08-16 11:09:08.059 DEBUG 11692 --- [scheduling-1] c.c.c.m.U.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:09:08.076 DEBUG 11692 --- [scheduling-1] c.c.c.m.U.selectByExampleWithRowbounds   : <==      Total: 3
+2022-08-16 11:09:08.084  INFO 11692 --- [scheduling-1] com.cyx.community.utils.FileUtils        : FILE_UTILS_NEW_INFO, url : https://avatars.githubusercontent.com/u/79297226?v=4, localFile : D:\code\community\09e9e7278af94fc5acea6760e5f404a7.png
+2022-08-16 11:09:08.963 ERROR 11692 --- [scheduling-1] com.cyx.community.provider.UFileService  : upload error,09e9e7278af94fc5acea6760e5f404a7.png
+
+cn.ucloud.ufile.exception.UfileIOException: Occur IOException while sending http request
+	at cn.ucloud.ufile.api.UfileApi.execute(UfileApi.java:176) ~[ufile-core-2.1.1.jar:na]
+	at com.cyx.community.provider.UFileService.upload(UFileService.java:85) [classes/:na]
+	at com.cyx.community.provider.UFileService.upload(UFileService.java:40) [classes/:na]
+	at com.cyx.community.schedule.AvatarFixTasks.fixUserAvatar(AvatarFixTasks.java:43) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_131]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_131]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_131]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_131]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) [spring-context-5.2.12.RELEASE.jar:5.2.12.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-5.2.12.RELEASE.jar:5.2.12.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_131]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [na:1.8.0_131]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_131]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [na:1.8.0_131]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_131]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_131]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_131]
+
+2022-08-16 11:09:08.964  INFO 11692 --- [scheduling-1] c.cyx.community.schedule.AvatarFixTasks  : fixUserAvatar stop Tue Aug 16 11:09:08 CST 2022
+2022-08-16 11:09:08.967 DEBUG 11692 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:09:08.967 DEBUG 11692 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:09:08.972  INFO 11692 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:09:08.972  INFO 11692 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:09:08.973  INFO 11692 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:09:08.973  INFO 11692 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:09:08.973  INFO 11692 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:09:08.973 DEBUG 11692 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:09:08.973 DEBUG 11692 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:09:08.975 DEBUG 11692 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:09:08.975  INFO 11692 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:09:11.544  INFO 11692 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-16 11:09:11.544  INFO 11692 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-16 11:09:11.548  INFO 11692 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2022-08-16 11:09:11.568 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:09:11.568 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660619351559(Long), 1660619351559(Long)
+2022-08-16 11:09:11.570 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:09:11.572 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:09:11.572 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660619351571(Long), 1660619351571(Long)
+2022-08-16 11:09:11.573 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:09:11.574 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:09:11.574 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660619351573(Long), 1660619351573(Long)
+2022-08-16 11:09:11.575 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:09:11.576 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:09:11.576 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660619351575(Long), 1660619351575(Long)
+2022-08-16 11:09:11.576 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:09:11.579 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:09:11.579 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: f5a3bb30-11e4-4b5e-94bd-670b195a00ce(String)
+2022-08-16 11:09:11.580 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:09:11.585 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:09:11.585 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:09:11.586 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:09:11.598 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:09:11.598 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:09:11.599 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:09:11.600 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:09:11.601 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:09:11.603 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:09:11.604 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:09:11.604 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:09:11.605 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:09:11.608 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:09:11.608 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:09:11.609 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:09:11.610 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:09:11.610 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:09:11.610 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:09:11.611 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:09:11.611 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:09:11.612 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:09:11.613 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:09:11.613 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:09:11.615 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:09:11.621 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.selectSticky   : ==>  Preparing: select * from question where sticky > 0 order by sticky desc, gmt_create desc 
+2022-08-16 11:09:11.622 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.selectSticky   : ==> Parameters: 
+2022-08-16 11:09:11.622 DEBUG 11692 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.selectSticky   : <==      Total: 0
+2022-08-16 11:09:37.526  INFO 1600 --- [main] com.cyx.community.CommunityApplication   : Starting CommunityApplication on LAPTOP-633GS3Q4 with PID 1600 (D:\code\community\target\classes started by 86159 in D:\code\community)
+2022-08-16 11:09:37.528  INFO 1600 --- [main] com.cyx.community.CommunityApplication   : No active profile set, falling back to default profiles: default
+2022-08-16 11:09:38.113  INFO 1600 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'listenerAsyncConfiguration' of type [com.cyx.community.listener.ListenerAsyncConfiguration$$EnhancerBySpringCGLIB$$f4d3abdd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-16 11:09:38.333  INFO 1600 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2022-08-16 11:09:38.340  INFO 1600 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-16 11:09:38.340  INFO 1600 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-08-16 11:09:38.393  INFO 1600 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-16 11:09:38.393  INFO 1600 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 824 ms
+2022-08-16 11:09:38.878  INFO 1600 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-08-16 11:09:38.935  INFO 1600 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-08-16 11:09:39.143  INFO 1600 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-08-16 11:09:39.186  INFO 1600 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2022-08-16 11:09:39.197  INFO 1600 --- [scheduling-1] c.cyx.community.schedule.AvatarFixTasks  : fixUserAvatar start Tue Aug 16 11:09:39 CST 2022
+2022-08-16 11:09:39.200  INFO 1600 --- [main] com.cyx.community.CommunityApplication   : Started CommunityApplication in 2.007 seconds (JVM running for 3.173)
+2022-08-16 11:09:39.224  INFO 1600 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-08-16 11:09:39.572  INFO 1600 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-08-16 11:09:39.577 DEBUG 1600 --- [scheduling-1] c.c.c.m.U.selectByExampleWithRowbounds   : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user order by id desc 
+2022-08-16 11:09:39.593 DEBUG 1600 --- [scheduling-1] c.c.c.m.U.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:09:39.607 DEBUG 1600 --- [scheduling-1] c.c.c.m.U.selectByExampleWithRowbounds   : <==      Total: 3
+2022-08-16 11:09:39.613  INFO 1600 --- [scheduling-1] com.cyx.community.utils.FileUtils        : FILE_UTILS_NEW_INFO, url : https://avatars.githubusercontent.com/u/79297226?v=4, localFile : D:\code\community\1a45344c84714281963c2ba1d3bf6dcd.png
+2022-08-16 11:09:41.385 ERROR 1600 --- [scheduling-1] com.cyx.community.provider.UFileService  : upload error,1a45344c84714281963c2ba1d3bf6dcd.png
+
+cn.ucloud.ufile.exception.UfileIOException: Occur IOException while sending http request
+	at cn.ucloud.ufile.api.UfileApi.execute(UfileApi.java:176) ~[ufile-core-2.1.1.jar:na]
+	at com.cyx.community.provider.UFileService.upload(UFileService.java:85) [classes/:na]
+	at com.cyx.community.provider.UFileService.upload(UFileService.java:40) [classes/:na]
+	at com.cyx.community.schedule.AvatarFixTasks.fixUserAvatar(AvatarFixTasks.java:43) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_131]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_131]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_131]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_131]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) [spring-context-5.2.12.RELEASE.jar:5.2.12.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-5.2.12.RELEASE.jar:5.2.12.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_131]
+	at java.util.concurrent.FutureTask.runAndReset$$$capture(FutureTask.java:308) [na:1.8.0_131]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java) [na:1.8.0_131]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_131]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [na:1.8.0_131]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_131]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_131]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_131]
+
+2022-08-16 11:09:41.386  INFO 1600 --- [scheduling-1] c.cyx.community.schedule.AvatarFixTasks  : fixUserAvatar stop Tue Aug 16 11:09:41 CST 2022
+2022-08-16 11:09:41.387 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:09:41.388 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:09:41.392  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:09:41.392  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:09:41.392  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:09:41.392  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:09:41.392  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:09:41.392 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:09:41.392 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:09:41.393 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:09:41.394  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:09:42.502  INFO 1600 --- [http-nio-8888-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-16 11:09:42.502  INFO 1600 --- [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-16 11:09:42.506  INFO 1600 --- [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2022-08-16 11:09:42.550 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:09:42.551 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660619382540(Long), 1660619382540(Long)
+2022-08-16 11:09:42.552 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:09:42.553 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:09:42.554 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660619382553(Long), 1660619382553(Long)
+2022-08-16 11:09:42.555 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:09:42.556 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:09:42.556 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660619382555(Long), 1660619382555(Long)
+2022-08-16 11:09:42.557 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:09:42.559 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:09:42.559 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660619382557(Long), 1660619382557(Long)
+2022-08-16 11:09:42.560 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:09:42.567 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:09:42.568 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:09:42.569 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:09:42.570 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:09:42.570 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:09:42.573 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:09:42.574 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:09:42.574 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:09:42.575 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:09:42.579 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:09:42.579 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:09:42.580 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:09:42.580 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:09:42.580 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:09:42.581 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:09:42.581 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:09:42.581 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:09:42.582 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:09:42.582 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:09:42.582 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:09:42.583 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:09:42.590 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.selectSticky   : ==>  Preparing: select * from question where sticky > 0 order by sticky desc, gmt_create desc 
+2022-08-16 11:09:42.590 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.selectSticky   : ==> Parameters: 
+2022-08-16 11:09:42.591 DEBUG 1600 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.selectSticky   : <==      Total: 0
+2022-08-16 11:18:06.659  WARN 1600 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m26s981ms510µs400ns).
+2022-08-16 11:18:06.664 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.685 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.700  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:18:06.701  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:18:06.701  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:18:06.701  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:18:06.701  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:18:06.701 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.701 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.703 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:18:06.703  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:18:06.703 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.703 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.705  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:18:06.705  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:18:06.705  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:18:06.705  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:18:06.705  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:18:06.706 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.706 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.707 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:18:06.707  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:18:06.707 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.707 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.708  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:18:06.708  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:18:06.708  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:18:06.708  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:18:06.708  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:18:06.708 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.709 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.709 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:18:06.710  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:18:06.710 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.710 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.712  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:18:06.712  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:18:06.712  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:18:06.712  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:18:06.712  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:18:06.713 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.713 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.714 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:18:06.714  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:18:06.714 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.714 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.715  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:18:06.715  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:18:06.715  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:18:06.715  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:18:06.716  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:18:06.716 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.716 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.717 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:18:06.717  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:18:06.717 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.717 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.719  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:18:06.719  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:18:06.719  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:18:06.719  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:18:06.719  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:18:06.719 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.719 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.720 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:18:06.720  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:18:06.721 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.721 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.722  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:18:06.722  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:18:06.722  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:18:06.722  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:18:06.722  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:18:06.723 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.723 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.724 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:18:06.724  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:18:06.724 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.724 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.725  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:18:06.726  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:18:06.726  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:18:06.726  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:18:06.726  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:18:06.726 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:18:06.726 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:18:06.727 DEBUG 1600 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:18:06.727  INFO 1600 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:18:07.064 DEBUG 1600 --- [http-nio-8888-exec-3] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( account_id = ? and type = ? ) 
+2022-08-16 11:18:07.064 DEBUG 1600 --- [http-nio-8888-exec-3] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: null(String), gitee(String)
+2022-08-16 11:18:07.065 DEBUG 1600 --- [http-nio-8888-exec-3] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 0
+2022-08-16 11:18:07.066 DEBUG 1600 --- [http-nio-8888-exec-3] c.c.community.mapper.UserMapper.insert   : ==>  Preparing: insert into user (id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+2022-08-16 11:18:07.067 DEBUG 1600 --- [http-nio-8888-exec-3] c.c.community.mapper.UserMapper.insert   : ==> Parameters: null, null(String), null, 7d31ecfc-b9d5-40c2-aaa6-8a8a2762b629(String), 1660619887066(Long), null, null, null, gitee(String), null
+2022-08-16 11:18:07.069 DEBUG 1600 --- [http-nio-8888-exec-3] c.c.community.mapper.UserMapper.insert   : <==    Updates: 1
+2022-08-16 11:18:07.164  INFO 1600 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-08-16 11:18:07.165  INFO 1600 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-08-16 11:18:07.167  INFO 1600 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-08-16 11:18:07.171  INFO 1600 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-08-16 11:21:21.966  INFO 13656 --- [main] com.cyx.community.CommunityApplication   : Starting CommunityApplication on LAPTOP-633GS3Q4 with PID 13656 (D:\code\community\target\classes started by 86159 in D:\code\community)
+2022-08-16 11:21:21.969  INFO 13656 --- [main] com.cyx.community.CommunityApplication   : No active profile set, falling back to default profiles: default
+2022-08-16 11:21:22.520  INFO 13656 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'listenerAsyncConfiguration' of type [com.cyx.community.listener.ListenerAsyncConfiguration$$EnhancerBySpringCGLIB$$7b3a1ba0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-16 11:21:22.698  INFO 13656 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2022-08-16 11:21:22.704  INFO 13656 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-16 11:21:22.704  INFO 13656 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-08-16 11:21:22.756  INFO 13656 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-16 11:21:22.756  INFO 13656 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 751 ms
+2022-08-16 11:21:23.114  INFO 13656 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-08-16 11:21:23.164  INFO 13656 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-08-16 11:21:23.263  INFO 13656 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-08-16 11:21:23.359  INFO 13656 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2022-08-16 11:21:23.365  INFO 13656 --- [scheduling-1] c.cyx.community.schedule.AvatarFixTasks  : fixUserAvatar start Tue Aug 16 11:21:23 CST 2022
+2022-08-16 11:21:23.368  INFO 13656 --- [main] com.cyx.community.CommunityApplication   : Started CommunityApplication in 1.64 seconds (JVM running for 2.141)
+2022-08-16 11:21:23.386  INFO 13656 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-08-16 11:21:23.717  INFO 13656 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-08-16 11:21:23.723 DEBUG 13656 --- [scheduling-1] c.c.c.m.U.selectByExampleWithRowbounds   : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user order by id desc 
+2022-08-16 11:21:23.739 DEBUG 13656 --- [scheduling-1] c.c.c.m.U.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:21:23.756 DEBUG 13656 --- [scheduling-1] c.c.c.m.U.selectByExampleWithRowbounds   : <==      Total: 4
+2022-08-16 11:21:23.761  INFO 13656 --- [scheduling-1] com.cyx.community.utils.FileUtils        : FILE_UTILS_NEW_INFO, url : https://avatars.githubusercontent.com/u/79297226?v=4, localFile : D:\code\community\7ec2bbe6d66e420a917658bed5a22dae.png
+2022-08-16 11:21:24.695 ERROR 13656 --- [scheduling-1] com.cyx.community.provider.UFileService  : upload error,7ec2bbe6d66e420a917658bed5a22dae.png
+
+cn.ucloud.ufile.exception.UfileIOException: Occur IOException while sending http request
+	at cn.ucloud.ufile.api.UfileApi.execute(UfileApi.java:176) ~[ufile-core-2.1.1.jar:na]
+	at com.cyx.community.provider.UFileService.upload(UFileService.java:85) [classes/:na]
+	at com.cyx.community.provider.UFileService.upload(UFileService.java:40) [classes/:na]
+	at com.cyx.community.schedule.AvatarFixTasks.fixUserAvatar(AvatarFixTasks.java:43) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_131]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_131]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_131]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_131]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) [spring-context-5.2.12.RELEASE.jar:5.2.12.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-5.2.12.RELEASE.jar:5.2.12.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_131]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [na:1.8.0_131]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_131]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [na:1.8.0_131]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_131]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_131]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_131]
+
+2022-08-16 11:21:24.696  INFO 13656 --- [scheduling-1] c.cyx.community.schedule.AvatarFixTasks  : fixUserAvatar stop Tue Aug 16 11:21:24 CST 2022
+2022-08-16 11:21:24.702 DEBUG 13656 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:21:24.703 DEBUG 13656 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:21:24.707  INFO 13656 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:21:24.708  INFO 13656 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:21:24.708  INFO 13656 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:21:24.708  INFO 13656 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:21:24.708  INFO 13656 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:21:24.708 DEBUG 13656 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:21:24.708 DEBUG 13656 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:21:24.709 DEBUG 13656 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:21:24.709  INFO 13656 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:21:27.829  INFO 13656 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-16 11:21:27.829  INFO 13656 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-16 11:21:27.836  INFO 13656 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2022-08-16 11:21:27.865 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:27.865 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620087852(Long), 1660620087852(Long)
+2022-08-16 11:21:27.870 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:21:27.871 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:27.872 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620087870(Long), 1660620087870(Long)
+2022-08-16 11:21:27.875 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:21:27.876 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:27.876 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620087875(Long), 1660620087875(Long)
+2022-08-16 11:21:27.878 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:21:27.879 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:27.879 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620087878(Long), 1660620087878(Long)
+2022-08-16 11:21:27.880 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:21:27.883 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:21:27.884 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: 7d31ecfc-b9d5-40c2-aaa6-8a8a2762b629(String)
+2022-08-16 11:21:27.885 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:21:27.890 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:21:27.890 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.N.countByExample                 : ==> Parameters: 4(Long), 0(Integer)
+2022-08-16 11:21:27.892 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:21:27.906 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:21:27.907 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:21:27.908 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:21:27.909 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:21:27.909 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:21:27.912 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:21:27.913 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:27.913 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:21:27.915 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:27.919 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:27.919 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:21:27.920 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:27.920 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:27.921 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:21:27.921 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:27.922 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:27.922 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:21:27.923 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:27.923 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:27.924 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:21:27.925 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:27.932 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.selectSticky   : ==>  Preparing: select * from question where sticky > 0 order by sticky desc, gmt_create desc 
+2022-08-16 11:21:27.932 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.selectSticky   : ==> Parameters: 
+2022-08-16 11:21:27.933 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.selectSticky   : <==      Total: 0
+2022-08-16 11:21:31.078 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:31.079 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620091077(Long), 1660620091077(Long)
+2022-08-16 11:21:31.080 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:21:31.081 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:31.082 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620091081(Long), 1660620091081(Long)
+2022-08-16 11:21:31.083 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:21:31.084 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:31.084 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620091083(Long), 1660620091083(Long)
+2022-08-16 11:21:31.085 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:21:31.086 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:31.086 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620091085(Long), 1660620091085(Long)
+2022-08-16 11:21:31.087 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:21:31.088 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:21:31.088 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:21:31.089 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:21:31.089 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:21:31.089 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:21:31.092 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:21:31.093 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:31.093 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:21:31.094 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:31.094 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:31.094 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:21:31.095 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:31.095 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:31.095 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:21:31.095 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:31.095 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:31.096 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:21:31.096 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:31.097 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:31.097 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:21:31.097 DEBUG 13656 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:36.797 DEBUG 13656 --- [http-nio-8888-exec-4] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( account_id = ? and type = ? ) 
+2022-08-16 11:21:36.797 DEBUG 13656 --- [http-nio-8888-exec-4] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: 10661050(String), gitee(String)
+2022-08-16 11:21:36.799 DEBUG 13656 --- [http-nio-8888-exec-4] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:21:36.802 DEBUG 13656 --- [http-nio-8888-exec-4] c.c.c.m.U.updateByExampleSelective       : ==>  Preparing: update user SET name = ?, token = ?, gmt_modified = ?, avatar_url = ? WHERE ( id = ? ) 
+2022-08-16 11:21:36.802 DEBUG 13656 --- [http-nio-8888-exec-4] c.c.c.m.U.updateByExampleSelective       : ==> Parameters: 马反向(String), b8301f64-58b7-4df3-8f41-5832ecfa3835(String), 1660620096799(Long), https://portrait.gitee.com/uploads/avatars/user/3553/10661050_horse-reverse_1660612327.png(String), 1(Long)
+2022-08-16 11:21:36.813 DEBUG 13656 --- [http-nio-8888-exec-4] c.c.c.m.U.updateByExampleSelective       : <==    Updates: 1
+2022-08-16 11:21:36.821 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:36.822 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620096820(Long), 1660620096820(Long)
+2022-08-16 11:21:36.823 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:21:36.824 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:36.824 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620096823(Long), 1660620096823(Long)
+2022-08-16 11:21:36.825 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:21:36.826 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:36.827 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620096826(Long), 1660620096826(Long)
+2022-08-16 11:21:36.828 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:21:36.828 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:36.829 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620096828(Long), 1660620096828(Long)
+2022-08-16 11:21:36.829 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:21:36.830 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:21:36.830 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:21:36.831 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:21:36.831 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:21:36.832 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:21:36.832 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:21:36.833 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:21:36.833 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:21:36.834 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:21:36.834 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:21:36.834 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:21:36.836 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:21:36.836 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:36.836 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:21:36.837 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:36.838 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:36.838 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:21:36.839 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:36.839 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:36.839 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:21:36.840 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:36.840 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:36.840 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:21:36.841 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:36.841 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:36.841 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:21:36.842 DEBUG 13656 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:39.172 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:39.173 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620099171(Long), 1660620099171(Long)
+2022-08-16 11:21:39.173 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:21:39.174 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:39.174 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620099174(Long), 1660620099174(Long)
+2022-08-16 11:21:39.174 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:21:39.175 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:39.175 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620099174(Long), 1660620099174(Long)
+2022-08-16 11:21:39.175 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:21:39.176 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:21:39.177 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620099175(Long), 1660620099175(Long)
+2022-08-16 11:21:39.177 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:21:39.178 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:21:39.178 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:21:39.179 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:21:39.179 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:21:39.179 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:21:39.180 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:21:39.180 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:21:39.180 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:21:39.181 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:21:39.181 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:21:39.181 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:21:39.182 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:21:39.182 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:39.182 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:21:39.183 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:39.185 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:39.185 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:21:39.185 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:39.186 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:39.186 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:21:39.186 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:39.186 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:39.187 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:21:39.187 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:21:39.187 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:21:39.187 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:21:39.188 DEBUG 13656 --- [http-nio-8888-exec-6] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:22:01.443 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:01.444 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620121442(Long), 1660620121442(Long)
+2022-08-16 11:22:01.445 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:22:01.446 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:01.446 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620121445(Long), 1660620121445(Long)
+2022-08-16 11:22:01.446 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:22:01.447 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:01.447 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620121447(Long), 1660620121447(Long)
+2022-08-16 11:22:01.447 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:22:01.448 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:01.448 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620121448(Long), 1660620121448(Long)
+2022-08-16 11:22:01.448 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:22:01.449 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:22:01.449 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:22:01.449 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:22:01.449 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:22:01.450 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:22:01.450 DEBUG 13656 --- [http-nio-8888-exec-7] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:22:03.867 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:03.868 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620123866(Long), 1660620123866(Long)
+2022-08-16 11:22:03.870 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:22:03.871 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:03.871 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620123871(Long), 1660620123871(Long)
+2022-08-16 11:22:03.872 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:22:03.872 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:03.873 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620123872(Long), 1660620123872(Long)
+2022-08-16 11:22:03.873 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:22:03.873 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:03.873 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620123873(Long), 1660620123873(Long)
+2022-08-16 11:22:03.874 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:22:03.875 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:22:03.875 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:22:03.876 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:22:03.877 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:22:03.877 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:22:03.877 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:22:03.878 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:22:03.878 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:22:03.878 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:22:03.879 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:22:03.879 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:22:03.879 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:22:03.879 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:22:03.879 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:22:03.880 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:22:03.880 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:22:03.880 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:22:03.880 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:22:03.881 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:22:03.881 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:22:03.881 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:22:03.882 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:22:03.882 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:22:03.882 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:22:03.883 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:22:03.883 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:22:03.883 DEBUG 13656 --- [http-nio-8888-exec-8] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:22:05.483 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:05.484 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620125483(Long), 1660620125483(Long)
+2022-08-16 11:22:05.485 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:22:05.486 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:05.487 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620125485(Long), 1660620125485(Long)
+2022-08-16 11:22:05.487 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:22:05.488 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:05.488 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620125488(Long), 1660620125488(Long)
+2022-08-16 11:22:05.489 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:22:05.489 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:05.489 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620125489(Long), 1660620125489(Long)
+2022-08-16 11:22:05.489 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:22:05.490 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:22:05.490 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:22:05.490 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:22:05.491 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:22:05.491 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:22:05.491 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:22:05.492 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.Q.selectByPrimaryKey             : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky , description from question where id = ? 
+2022-08-16 11:22:05.492 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.Q.selectByPrimaryKey             : ==> Parameters: 6(Long)
+2022-08-16 11:22:05.494 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.Q.selectByPrimaryKey             : <==      Total: 1
+2022-08-16 11:22:05.494 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:22:05.494 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:22:05.494 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:22:05.496 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.QuestionExtMapper.selectRelated  : ==>  Preparing: select * from question WHERE id != ? and tag regexp ? order by gmt_create desc limit 20 
+2022-08-16 11:22:05.496 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.QuestionExtMapper.selectRelated  : ==> Parameters: 6(Long), actionscript|rust|spring(String)
+2022-08-16 11:22:05.497 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.QuestionExtMapper.selectRelated  : <==      Total: 0
+2022-08-16 11:22:05.503 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.CommentMapper.selectByExample    : ==>  Preparing: select id, parent_id, type, commentator, gmt_create, gmt_modified, like_count, content, comment_count from comment WHERE ( parent_id = ? and type = ? ) order by gmt_create desc 
+2022-08-16 11:22:05.503 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.CommentMapper.selectByExample    : ==> Parameters: 6(Long), 1(Integer)
+2022-08-16 11:22:05.505 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.m.CommentMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:22:05.505 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.QuestionExtMapper.incView   : ==>  Preparing: update question set view_count = view_count + ? where id = ? 
+2022-08-16 11:22:05.505 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.QuestionExtMapper.incView   : ==> Parameters: 1(Integer), 6(Long)
+2022-08-16 11:22:05.507 DEBUG 13656 --- [http-nio-8888-exec-9] c.c.c.mapper.QuestionExtMapper.incView   : <==    Updates: 1
+2022-08-16 11:22:05.923 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:05.924 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620125923(Long), 1660620125923(Long)
+2022-08-16 11:22:05.926 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:22:05.927 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:05.928 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620125927(Long), 1660620125927(Long)
+2022-08-16 11:22:05.929 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:22:05.930 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:05.930 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620125929(Long), 1660620125929(Long)
+2022-08-16 11:22:05.932 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:22:05.933 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:05.933 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620125932(Long), 1660620125932(Long)
+2022-08-16 11:22:05.934 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:22:05.935 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:22:05.935 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:22:05.936 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:22:05.937 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:22:05.938 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:22:05.939 DEBUG 13656 --- [http-nio-8888-exec-10] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:22:11.500 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:11.500 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620131499(Long), 1660620131499(Long)
+2022-08-16 11:22:11.502 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:22:11.502 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:11.503 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620131502(Long), 1660620131502(Long)
+2022-08-16 11:22:11.503 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:22:11.504 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:11.504 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620131503(Long), 1660620131503(Long)
+2022-08-16 11:22:11.504 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:22:11.505 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:22:11.505 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620131504(Long), 1660620131504(Long)
+2022-08-16 11:22:11.505 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:22:11.506 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:22:11.506 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:22:11.507 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:22:11.509 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:22:11.509 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:22:11.510 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:22:11.510 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:22:11.510 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:22:11.511 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:22:11.511 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:22:11.511 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:22:11.512 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:22:11.512 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:22:11.512 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:22:11.513 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:22:11.513 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:22:11.513 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:22:11.514 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:22:11.514 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:22:11.514 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:22:11.515 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:22:11.515 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:22:11.515 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:22:11.515 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:22:11.516 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:22:11.516 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:22:11.516 DEBUG 13656 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:22:23.369 DEBUG 13656 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:22:23.370 DEBUG 13656 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:22:23.371  INFO 13656 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:22:23.371  INFO 13656 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:22:23.371  INFO 13656 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:22:23.371  INFO 13656 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:22:23.371  INFO 13656 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:22:23.371 DEBUG 13656 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:22:23.371 DEBUG 13656 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:22:23.372 DEBUG 13656 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:22:23.372  INFO 13656 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:23:19.734  INFO 19688 --- [main] com.cyx.community.CommunityApplication   : Starting CommunityApplication on LAPTOP-633GS3Q4 with PID 19688 (D:\code\community\target\classes started by 86159 in D:\code\community)
+2022-08-16 11:23:19.737  INFO 19688 --- [main] com.cyx.community.CommunityApplication   : No active profile set, falling back to default profiles: default
+2022-08-16 11:23:20.368  INFO 19688 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'listenerAsyncConfiguration' of type [com.cyx.community.listener.ListenerAsyncConfiguration$$EnhancerBySpringCGLIB$$bc8e3a5d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-16 11:23:20.568  INFO 19688 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2022-08-16 11:23:20.575  INFO 19688 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-16 11:23:20.575  INFO 19688 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-08-16 11:23:20.628  INFO 19688 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-16 11:23:20.628  INFO 19688 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 854 ms
+2022-08-16 11:23:21.011  INFO 19688 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-08-16 11:23:21.059  INFO 19688 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-08-16 11:23:21.158  INFO 19688 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-08-16 11:23:21.249  INFO 19688 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2022-08-16 11:23:21.255  INFO 19688 --- [scheduling-1] c.cyx.community.schedule.AvatarFixTasks  : fixUserAvatar start Tue Aug 16 11:23:21 CST 2022
+2022-08-16 11:23:21.257  INFO 19688 --- [main] com.cyx.community.CommunityApplication   : Started CommunityApplication in 1.773 seconds (JVM running for 2.289)
+2022-08-16 11:23:21.278  INFO 19688 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-08-16 11:23:21.635  INFO 19688 --- [scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-08-16 11:23:21.640 DEBUG 19688 --- [scheduling-1] c.c.c.m.U.selectByExampleWithRowbounds   : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user order by id desc 
+2022-08-16 11:23:21.656 DEBUG 19688 --- [scheduling-1] c.c.c.m.U.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:23:21.674 DEBUG 19688 --- [scheduling-1] c.c.c.m.U.selectByExampleWithRowbounds   : <==      Total: 4
+2022-08-16 11:23:21.681  INFO 19688 --- [scheduling-1] com.cyx.community.utils.FileUtils        : FILE_UTILS_NEW_INFO, url : https://avatars.githubusercontent.com/u/79297226?v=4, localFile : D:\code\community\2ae405fb76264deeaf819caa950a46c2.png
+2022-08-16 11:23:22.519 ERROR 19688 --- [scheduling-1] com.cyx.community.provider.UFileService  : upload error,2ae405fb76264deeaf819caa950a46c2.png
+
+cn.ucloud.ufile.exception.UfileIOException: Occur IOException while sending http request
+	at cn.ucloud.ufile.api.UfileApi.execute(UfileApi.java:176) ~[ufile-core-2.1.1.jar:na]
+	at com.cyx.community.provider.UFileService.upload(UFileService.java:85) [classes/:na]
+	at com.cyx.community.provider.UFileService.upload(UFileService.java:40) [classes/:na]
+	at com.cyx.community.schedule.AvatarFixTasks.fixUserAvatar(AvatarFixTasks.java:43) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_131]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_131]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_131]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_131]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) [spring-context-5.2.12.RELEASE.jar:5.2.12.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-5.2.12.RELEASE.jar:5.2.12.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_131]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [na:1.8.0_131]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_131]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [na:1.8.0_131]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_131]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_131]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_131]
+
+2022-08-16 11:23:22.519  INFO 19688 --- [scheduling-1] c.cyx.community.schedule.AvatarFixTasks  : fixUserAvatar stop Tue Aug 16 11:23:22 CST 2022
+2022-08-16 11:23:22.522 DEBUG 19688 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:23:22.522 DEBUG 19688 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:23:22.526  INFO 19688 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 1
+2022-08-16 11:23:22.526  INFO 19688 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 2
+2022-08-16 11:23:22.527  INFO 19688 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 3
+2022-08-16 11:23:22.527  INFO 19688 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 4
+2022-08-16 11:23:22.527  INFO 19688 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 5
+2022-08-16 11:23:22.527 DEBUG 19688 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag, sticky from question 
+2022-08-16 11:23:22.527 DEBUG 19688 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : ==> Parameters: 
+2022-08-16 11:23:22.528 DEBUG 19688 --- [scheduling-1] c.c.c.m.Q.selectByExampleWithRowbounds   : <==      Total: 6
+2022-08-16 11:23:22.529  INFO 19688 --- [scheduling-1] com.cyx.community.schedule.HotTagTasks   : list question 6
+2022-08-16 11:23:24.247  INFO 19688 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-16 11:23:24.247  INFO 19688 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-16 11:23:24.251  INFO 19688 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2022-08-16 11:23:24.271 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:24.271 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620204261(Long), 1660620204261(Long)
+2022-08-16 11:23:24.274 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:23:24.275 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:24.275 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620204274(Long), 1660620204274(Long)
+2022-08-16 11:23:24.276 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:23:24.277 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:24.277 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620204276(Long), 1660620204276(Long)
+2022-08-16 11:23:24.278 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:23:24.279 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:24.280 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620204278(Long), 1660620204278(Long)
+2022-08-16 11:23:24.280 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:23:24.283 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:23:24.283 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:23:24.284 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:23:24.289 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:23:24.289 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:23:24.290 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:23:24.303 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:23:24.303 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:23:24.304 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:23:24.305 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:23:24.305 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:23:24.308 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:23:24.308 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:24.308 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:24.309 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:24.312 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:24.313 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:24.314 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:24.314 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:24.314 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:23:24.315 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:24.316 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:24.316 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:24.317 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:24.317 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:24.317 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:23:24.319 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:24.324 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.selectSticky   : ==>  Preparing: select * from question where sticky > 0 order by sticky desc, gmt_create desc 
+2022-08-16 11:23:24.325 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.selectSticky   : ==> Parameters: 
+2022-08-16 11:23:24.325 DEBUG 19688 --- [http-nio-8888-exec-1] c.c.c.m.QuestionExtMapper.selectSticky   : <==      Total: 0
+2022-08-16 11:23:26.475 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:26.476 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620206474(Long), 1660620206474(Long)
+2022-08-16 11:23:26.477 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:23:26.478 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:26.478 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620206477(Long), 1660620206477(Long)
+2022-08-16 11:23:26.478 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:23:26.479 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:26.479 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620206479(Long), 1660620206479(Long)
+2022-08-16 11:23:26.480 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:23:26.481 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:26.481 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620206480(Long), 1660620206480(Long)
+2022-08-16 11:23:26.482 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:23:26.482 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:23:26.483 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:23:26.483 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:23:26.484 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:23:26.484 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:23:26.485 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:23:26.485 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:23:26.485 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:23:26.486 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:23:26.486 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:23:26.486 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:23:26.489 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:23:26.489 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:26.489 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:26.490 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:26.490 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:26.490 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:26.490 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:26.491 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:26.491 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:23:26.491 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:26.491 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:26.491 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:26.492 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:26.492 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:26.492 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:23:26.494 DEBUG 19688 --- [http-nio-8888-exec-3] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:27.222 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:27.222 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620207221(Long), 1660620207221(Long)
+2022-08-16 11:23:27.223 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:23:27.224 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:27.225 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620207223(Long), 1660620207223(Long)
+2022-08-16 11:23:27.225 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:23:27.226 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:27.226 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620207225(Long), 1660620207225(Long)
+2022-08-16 11:23:27.227 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:23:27.228 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:27.228 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620207227(Long), 1660620207227(Long)
+2022-08-16 11:23:27.229 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:23:27.229 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:23:27.229 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:23:27.230 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:23:27.231 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:23:27.231 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:23:27.232 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:23:27.233 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:23:27.233 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:23:27.233 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:23:27.234 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:23:27.234 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:23:27.235 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:23:27.235 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:27.235 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:27.236 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:27.237 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:27.237 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:27.238 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:27.238 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:27.238 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:23:27.239 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:27.239 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:27.239 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:27.240 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:27.241 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:27.241 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:23:27.241 DEBUG 19688 --- [http-nio-8888-exec-2] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:39.144 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:39.145 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620219144(Long), 1660620219144(Long)
+2022-08-16 11:23:39.146 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:23:39.147 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:39.147 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620219146(Long), 1660620219146(Long)
+2022-08-16 11:23:39.148 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:23:39.149 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:39.149 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620219148(Long), 1660620219148(Long)
+2022-08-16 11:23:39.149 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:23:39.150 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:39.150 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620219149(Long), 1660620219149(Long)
+2022-08-16 11:23:39.151 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:23:39.151 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:23:39.151 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:23:39.152 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:23:39.153 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:23:39.153 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:23:39.154 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:23:39.155 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:23:39.155 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:23:39.155 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:23:39.156 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:23:39.156 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:23:39.157 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:23:39.157 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:39.157 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:39.158 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:39.160 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:39.160 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:39.161 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:39.161 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:39.161 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:23:39.162 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:39.163 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:39.163 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:39.164 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:39.164 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:39.164 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:23:39.165 DEBUG 19688 --- [http-nio-8888-exec-5] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:53.337 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:53.338 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620233336(Long), 1660620233336(Long)
+2022-08-16 11:23:53.339 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:23:53.341 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:53.341 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620233340(Long), 1660620233340(Long)
+2022-08-16 11:23:53.343 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:23:53.344 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:53.345 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620233343(Long), 1660620233343(Long)
+2022-08-16 11:23:53.345 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:23:53.346 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:53.347 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620233346(Long), 1660620233346(Long)
+2022-08-16 11:23:53.348 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:23:53.349 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:23:53.349 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:23:53.350 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:23:53.351 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:23:53.351 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:23:53.352 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.N.countByExample                 : <==      Total: 1
+2022-08-16 11:23:53.352 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question WHERE sticky = 0 
+2022-08-16 11:23:53.352 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2022-08-16 11:23:53.353 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2022-08-16 11:23:53.353 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question WHERE sticky = 0 order by gmt_create desc limit ?,? 
+2022-08-16 11:23:53.354 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2022-08-16 11:23:53.355 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.Q.selectBySearch                 : <==      Total: 5
+2022-08-16 11:23:53.356 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:53.356 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:53.357 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:53.358 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:53.358 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:53.358 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:53.359 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:53.359 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:23:53.359 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:53.360 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:53.360 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 1(Long)
+2022-08-16 11:23:53.360 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:53.360 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user where id = ? 
+2022-08-16 11:23:53.360 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 3(Long)
+2022-08-16 11:23:53.361 DEBUG 19688 --- [http-nio-8888-exec-7] c.c.c.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2022-08-16 11:23:54.290 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:54.291 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), NAV(String), 1660620234289(Long), 1660620234289(Long)
+2022-08-16 11:23:54.293 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 2
+2022-08-16 11:23:54.294 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:54.294 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), SIDE(String), 1660620234293(Long), 1660620234293(Long)
+2022-08-16 11:23:54.295 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 1
+2022-08-16 11:23:54.296 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:54.297 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), FOOTER(String), 1660620234295(Long), 1660620234295(Long)
+2022-08-16 11:23:54.297 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:23:54.298 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==>  Preparing: select id, title, url, image, gmt_start, gmt_end, gmt_create, gmt_modified, status, pos from ad WHERE ( status = ? and pos = ? and gmt_start < ? and gmt_end > ? ) 
+2022-08-16 11:23:54.298 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : ==> Parameters: 1(Integer), HEADER(String), 1660620234297(Long), 1660620234297(Long)
+2022-08-16 11:23:54.299 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.AdMapper.selectByExample    : <==      Total: 0
+2022-08-16 11:23:54.299 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, bio, avatar_url, type, disable from user WHERE ( token = ? ) 
+2022-08-16 11:23:54.299 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.UserMapper.selectByExample  : ==> Parameters: b8301f64-58b7-4df3-8f41-5832ecfa3835(String)
+2022-08-16 11:23:54.300 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2022-08-16 11:23:54.301 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2022-08-16 11:23:54.301 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.m.N.countByExample                 : ==> Parameters: 1(Long), 0(Integer)
+2022-08-16 11:23:54.302 DEBUG 19688 --- [http-nio-8888-exec-8] c.c.c.m.N.countByExample                 : <==      Total: 1

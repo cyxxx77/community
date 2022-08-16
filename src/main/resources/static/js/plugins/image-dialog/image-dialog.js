@@ -175,7 +175,8 @@
                               }
                               else
                               {
-                                  alert(json.message);
+                                  dialog.find("[data-url]").val(json.url);
+                                  //alert(json.message);
                               }
                             }
 
